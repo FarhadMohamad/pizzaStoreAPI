@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const orderRoutes = require('./routes/order');
 const mongoose = require('./util/database'); 
 
 app.use(bodyParser.json());
@@ -22,7 +23,7 @@ app.use(function(req, res, next) {
     }
   });
   
-  app.use('/api/', authRoutes);
+  app.use('/api/', authRoutes,orderRoutes);
 
   app.use(function (req, res, next) {
     var err = new Error('Page Not Found');

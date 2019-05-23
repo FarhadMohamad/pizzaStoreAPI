@@ -19,7 +19,12 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  orders: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Order'
+    }]
 });
 
 
