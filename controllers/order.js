@@ -1,6 +1,7 @@
 const Order = require('../models/order');
 const User = require('../models/user');
 const pizzas = require('../data/pizzas');
+const { calcOrder } = require('../util/priceCalc');
 const { validationResult } = require('express-validator/check');
 
 
@@ -8,6 +9,7 @@ exports.getPizzas = (req, res, next) => {
   return res.json(pizzas.pizzas);
 }
 exports.createOrder = (req, res, next) => {
+  console.log('bbd!!!!!!!!!!!!!');
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error('Validation failed, entered data is incorrect.');
@@ -18,9 +20,10 @@ exports.createOrder = (req, res, next) => {
       creator: req.userId,
       size: req.body.size,
       address: req.body.address,
+      pizzaID: req.body.pizzaID,
       dip: req.body.dip,
       quantity:req.body.quantity,
-      total: "total"
+      total: calcOrder(req.body.pizzaID, req.body.size, req.body.quantity)
 
   });
   order

@@ -16,6 +16,10 @@ var OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pizzaID: {
+    type: String,
+    required: true,
+  },
   dip: {
     type: String,
     required: true,
