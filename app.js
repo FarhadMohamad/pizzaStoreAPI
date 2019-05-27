@@ -4,7 +4,8 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const orderRoutes = require('./routes/order');
-const mongoose = require('./util/database'); 
+const mongoose = require('./util/database');
+const path = require('path'); 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,8 +23,10 @@ app.use(function(req, res, next) {
       return next();
     }
   });
-  
-  app.use('/api/', authRoutes,orderRoutes);
+
+  app.use('/api/', authRoutes, orderRoutes);
+
+  app.use('/', express.static(path.join(__dirname, 'views')));
 
   app.use(function (req, res, next) {
     var err = new Error('Page Not Found');

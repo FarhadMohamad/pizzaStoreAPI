@@ -14,8 +14,8 @@ exports.pizzas = [
         }
     },
 
-   5: {
-        id: 5,    
+   1: {
+        id: 1,    
         name: "hawaiian",
         desctiption: "Tasty pizza with pinaples",
         sizes: {

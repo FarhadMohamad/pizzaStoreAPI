@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 // mongoose.connect('mongodb://vidas:vidas123@coachgo-shard-00-00-dqxa6.mongodb.net:27017/pizza?ssl=true&authSource=admin', 
-mongoose.connect('mongodb://localhost/pizza-database', 
+mongoose.connect('mongodb://localhost/pizza-database', //27017 default port
 {useNewUrlParser: true});
 
 var db = mongoose.connection;
